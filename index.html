@@ -3,6 +3,14 @@
     <meta charset="UTF-8">
     <title>Shopping List</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+    h1 {
+    text-align: center;
+    }
+    li {
+    transition: all 1s ease;
+    }
+    </style>
 </head>
 <body>
     <h1>Shopping List</h1>
@@ -11,6 +19,7 @@
     function create(type, parent, text){
         const el = document.createElement(type);
         parent.appendChild(el);
+        
         if(text) {
             el.innerText = text;
         }
@@ -20,26 +29,30 @@
     const input = create('input', body);
     const button = create('button', body, 'ADD');
     const ul = create('ul', body);
+
     button.addEventListener('click', newTodo);
+    
     function newTodo() {
         const value = input.value;
         if(!value) {
             return;
-        }
+        };
+
         const li = create('li', ul, value);
         const checkbox = create('input', li);
+        
         li.prepend(checkbox);
         checkbox.type = 'checkbox';
+        checkbox.value = 'checkbox';
         checkbox.addEventListener('change', function () {
-            console.dir(this.checked);
             
             if (this.checked) {
                 this.parentNode.classList.add('checked');
                 
             } else {
                 this.parentNode.classList.add('checked');
-            }
-        })
+            };
+        });
     };
 </script>
     
