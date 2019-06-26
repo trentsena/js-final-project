@@ -1,0 +1,30 @@
+body {
+    background-color: dimgray;
+    text-align: center;
+    font-size: xx-large;
+}
+h1{
+    color: firebrick;
+    text-shadow: 2px 1.5px 0px #0a0a0a;
+}
+button {
+    transition-duration: 0.5s;
+}
+button:hover {
+    background-color: firebrick;
+    color: white;
+    text-shadow: 1px 1px 1px #0a0a0a;
+}
+li, input {
+    color: firebrick;
+    text-shadow: 0.5px 0.5px 0.5px #2c2c2c;
+}
+.checkbox {
+    size: 100px;
+}
+.checked {
+    text-decoration: line-through;
+}
+.gray {
+    color: gray;
+}

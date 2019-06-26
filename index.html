@@ -4,56 +4,42 @@
     <title>Shopping List</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-    h1 {
-    text-align: center;
-    }
-    li {
-    transition: all 1s ease;
-    }
+    
     </style>
 </head>
 <body>
-    <h1>Shopping List</h1>
 <script>
-    const body = document.body;
-    function create(type, parent, text){
-        const el = document.createElement(type);
-        parent.appendChild(el);
-        
-        if(text) {
-            el.innerText = text;
-        }
-        return el;
-    };
-
-    const input = create('input', body);
-    const button = create('button', body, 'ADD');
-    const ul = create('ul', body);
-
-    button.addEventListener('click', newTodo);
-    
-    function newTodo() {
-        const value = input.value;
-        if(!value) {
-            return;
-        };
-
-        const li = create('li', ul, value);
-        const checkbox = create('input', li);
-        
+    const header = document.createElement("h1");
+    header.textContent = "My Shopping List";
+    document.body.appendChild(header);
+    const myInput = document.createElement('input');
+    myInput.placeholder = "New Item";
+    document.body.appendChild(myInput);
+    const button = document.createElement('button');
+    button.innerText = 'Add';
+    document.body.appendChild(button);
+    const ul = document.createElement("ul");
+    document.body.appendChild(ul);
+    function addListItem() {
+        if (!myInput.value) return;
+        const li = document.createElement("li");
+        li.innerText = myInput.value;
+        const checkbox = document.createElement("input", li);
         li.prepend(checkbox);
         checkbox.type = 'checkbox';
-        checkbox.value = 'checkbox';
-        checkbox.addEventListener('change', function () {
-            
-            if (this.checked) {
-                this.parentNode.classList.add('checked');
-                
+        ul.appendChild(li);
+        li.addEventListener("click", function() {
+            if ( this.classList.contains('checked') ) {
+                this.classList.remove('checked');
+                this.classList.remove('gray');
             } else {
-                this.parentNode.classList.add('checked');
-            };
+                this.classList.add('checked');
+                this.classList.add('gray');
+            }
         });
-    };
+        myInput.value = '';
+    }
+    button.addEventListener("click", addListItem);
 </script>
     
 </body>
